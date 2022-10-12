@@ -18,6 +18,7 @@ import com.tokiobank.transference.business.enums.TaxEnum;
 import com.tokiobank.transference.business.models.AccountTransference;
 
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 @Entity
@@ -31,6 +32,9 @@ public class AccountTransferenceEntity extends BaseEntity implements AccountTran
 	@ManyToOne
 	@JoinColumn(name="accountDestiny")
 	private AccountEntity accountDestiny;
+	
+	@Column
+	private BigDecimal valueTransference;
 	
 	@Embedded
 	private TaxEnum tax;
