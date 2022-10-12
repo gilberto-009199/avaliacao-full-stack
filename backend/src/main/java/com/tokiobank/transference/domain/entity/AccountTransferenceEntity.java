@@ -1,6 +1,7 @@
 package com.tokiobank.transference.domain.entity;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -24,22 +25,18 @@ import lombok.Data;
 public class AccountTransferenceEntity extends BaseEntity implements AccountTransference{
 
 	@ManyToOne
-	@JoinColumn(name="account_origin")
+	@JoinColumn(name="accountOrigin")
 	private AccountEntity accountOrigin;
 
 	@ManyToOne
-	@JoinColumn(name="account_destiny")
+	@JoinColumn(name="accountDestiny")
 	private AccountEntity accountDestiny;
 	
 	@Embedded
-	@AttributeOverrides({
-	       @AttributeOverride(name="taxPercent", column=@Column(name="taxPercent")),
-	       @AttributeOverride(name="taxValue", column=@Column(name="taxValue"))
-	})
 	private TaxEnum tax;
-	/*public EmploymentPeriod getEmploymentPeriod() { ... }
-//@Enumerated(EnumType.STRING)
-	private BigDecimal taxPercent;
-	private BigDecimal taxValue;*/
+	
+	@Column(updatable = false)
+	private Date appointmentDate;
+
 	
 }

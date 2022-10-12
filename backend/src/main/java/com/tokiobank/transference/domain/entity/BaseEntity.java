@@ -1,7 +1,6 @@
 package com.tokiobank.transference.domain.entity;
 
-import java.sql.Date;
-import java.util.UUID;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;

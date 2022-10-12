@@ -10,7 +10,6 @@ public class TransferenceApplication {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(TransferenceApplication.class)
-		.web(WebApplicationType.SERVLET)
 		.bannerMode(Banner.Mode.OFF)
 		.run(args);
 	}
