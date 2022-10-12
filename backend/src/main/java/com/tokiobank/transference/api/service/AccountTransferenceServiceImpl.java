@@ -5,6 +5,4 @@ import org.springframework.stereotype.Service;
 import com.tokiobank.transference.business.services.AccountTransferenceService;
 
 @Service
-public class AccountTransferenceServiceImpl implements AccountTransferenceService {
-
-}
+public class AccountTransferenceServiceImpl implements AccountTransferenceService {}
