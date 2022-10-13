@@ -21,8 +21,6 @@ import lombok.Getter;
 @RequestMapping(path = "account")
 public class AccountRestController {
 	
-	
-	
 	@GetMapping
 	public ResponseEntity<?> getAccounts(){
 		return new ResponseEntity<>(HttpStatus.OK);

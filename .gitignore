@@ -16,3 +16,7 @@ backend/.project
 # JDT-specific (Eclipse Java Development Tools)
 backend/.classpath
 backend/bin/
+
+frontend/.angular/
+frontend/node_modules/
+frontend/package-lock.json

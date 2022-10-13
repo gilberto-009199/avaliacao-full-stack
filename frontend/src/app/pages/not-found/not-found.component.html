@@ -1,0 +1,12 @@
+<div fxLayout="row" style="margin-top: 100px;" fxLayoutAlign="center center" class="row-height">
+    
+    <p-card fxFlex="30%" header="Pagina não encontrada!" subheader="Opss.." [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <p>Parece que essa pagina não pode ser encontrada, por favor tente mais tarde!</p>
+        <ng-template pTemplate="footer" >
+            <div fxFlex="80%" fxLayout="row"  fxLayoutAlign="end">
+                <p-button (onClick)="goHome()" fxFlex="30%"  label="Home" icon="pi pi-sign-in"></p-button>
+            </div>
+        </ng-template>
+    </p-card>
+    
+</div>

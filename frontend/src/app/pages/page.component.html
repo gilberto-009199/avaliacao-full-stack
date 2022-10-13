@@ -1,0 +1,33 @@
+<div fxLayout='row wrap'>
+    <div fxFlex="100%">
+        <p-menubar>
+            <ng-template fxLayout="row" pTemplate="start">
+                <p-dropdown [style]="{width: '360px'}" [options]="contas" [(ngModel)]="selectedConta" optionLabel="numero" [filter]="true" filterBy="numero" [showClear]="false" placeholder="Conta">
+                    <ng-template pTemplate="selectedItem">
+                        <div fxLayout="row wrap" *ngIf="selectedConta">
+                            <div fxFlex="80%">
+                                <i class="pi pi-user" style="font-size: 0.8em"></i> {{selectedConta.titular}}
+                            </div>
+                            <div fxFlex="80%">
+                                Número: {{selectedConta.numero}}
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-country pTemplate="item">
+                        <div fxFlex="80%">
+                            <i class="pi pi-user" style="font-size: 0.8em"></i> {{selectedConta.titular}}
+                        </div>
+                        <div fxFlex="80%">
+                            Número: {{selectedConta.numero}}
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+            </ng-template>
+        </p-menubar>
+    </div>
+    <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center center">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
