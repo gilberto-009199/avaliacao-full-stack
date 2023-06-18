@@ -4,3 +4,6 @@
     border: none;
     margin: auto;
 }
+.p-menubar a.p-menubar-button{
+    display: none!important;
+}

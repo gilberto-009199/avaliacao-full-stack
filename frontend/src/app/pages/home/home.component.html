@@ -1,3 +1,54 @@
-<div>
-home
+<div id="tbl_transference" fxFlex="100%" fxLayout="row" fxLayoutAlign="center center">
+    <p-panel fxFlex="100%" fxLayout="row wrap">
+        <ng-template pTemplate="header">
+            Transferencias
+        </ng-template>
+        <ng-template pTemplate="body">
+            <div fxFlex="100%" fxLayout="row wrap" *ngIf="account" style="text-align: end; margin: 10px 0px;">
+                Saldo: R$
+                <label [ngStyle]="{'color': saldo < 0 ? 'red' : 'green'}">
+                    {{ saldo | number: '1.1-2'}}
+                </label>
+            </div>
+            <p-table fxFlex="100%" fxLayout="row wrap" [value]="accountTransferences" responsiveLayout="scroll"  [tableStyle]="{ 'min-width': '60vmax' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Conta de Origem</th>
+                        <th>Conta de Destino</th>
+                        <th>Valor</th>
+                        <th>Taxa</th>
+                        <th>Data</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-transference>
+                    <tr>
+                        <td>{{transference?.accountOrigin.titular}}</td>
+                        <td>{{transference?.accountDestiny.titular}}</td>
+                        <td [ngStyle]="{'color': account ? (transference?.accountOrigin.numero == account ? 'red' : 'green'):''}">
+                            R$ {{transference?.valueTransference  | number: '1.1-2'}}
+                        </td>
+                        <td>R$ {{ (transference.tax.taxValue + transference.valueTransference * (0.1 * transference.tax.taxPercent)) | number: '1.1-2'}}</td>
+                        <td>{{ transference.appointmentDate | date:'dd/MM/YY' }}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <tr *ngIf="accountTransferences.length < 1 ">
+                        <td colspan="5">
+                            <div fxLayout="row wrap" fxFlex="100%" fxLayoutAlign="center center">
+                                <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center center" style="text-align: center;">
+                                    <i class="pi pi-search" style="font-size: 5rem"></i>
+                                </div>
+                                <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center center" style="text-align: center;font-size: 1.2rem">
+                                    <span fxFlex="100%" fxLayout="row wrap">
+                                        Nenhuma transferencia encontrada!
+                                    </span>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </ng-template>
+    </p-panel>
 </div>

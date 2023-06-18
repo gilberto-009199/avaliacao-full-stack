@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: PageComponent, children:[
-      { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) }
+      { path: 'account', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) }
     ]
   },
   { path: '**', loadChildren:() => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) }

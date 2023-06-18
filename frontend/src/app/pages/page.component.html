@@ -1,8 +1,8 @@
 <div fxLayout='row wrap'>
     <div fxFlex="100%">
         <p-menubar>
-            <ng-template fxLayout="row" pTemplate="start">
-                <p-dropdown [style]="{width: '360px'}" [options]="contas" [(ngModel)]="selectedConta" optionLabel="numero" [filter]="true" filterBy="numero" [showClear]="false" placeholder="Conta">
+            <ng-template pTemplate="end">
+                <p-dropdown (onChange)="onChangeAccount($event.value)" [style]="{width: '360px'}" [options]="contas" [(ngModel)]="selectedConta" optionLabel="numero" [filter]="true" filterBy="numero" [showClear]="false" placeholder="Conta">
                     <ng-template pTemplate="selectedItem">
                         <div fxLayout="row wrap" *ngIf="selectedConta">
                             <div fxFlex="80%">
@@ -13,12 +13,12 @@
                             </div>
                         </div>
                     </ng-template>
-                    <ng-template let-country pTemplate="item">
-                        <div fxFlex="80%">
-                            <i class="pi pi-user" style="font-size: 0.8em"></i> {{selectedConta.titular}}
+                    <ng-template let-conta pTemplate="item">
+                        <div fxFlex="30%">
+                            <i class="pi pi-user" style="font-size: 0.8em"></i> {{conta.titular}}
                         </div>
                         <div fxFlex="80%">
-                            Número: {{selectedConta.numero}}
+                            Número: {{conta.numero}}
                         </div>
                     </ng-template>
                 </p-dropdown>
@@ -26,8 +26,65 @@
         </p-menubar>
     </div>
     <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="center center">
-        <div>
-            <router-outlet></router-outlet>
+        <!--  PAINEL/FORM  TRANSFERENCE -->
+        <div fxFlex.gt-md="30%" fxFlex.gt-sm="100%" fxLayout="row wrap" fxLayoutAlign="center center">
+            <p-panel fxFlex="100%" fxLayout="row wrap">
+                <ng-template pTemplate="header">
+                    Transferencia
+                </ng-template>
+                <ng-template pTemplate="body">
+                    <form [formGroup]="frmTransference" (ngSubmit)="onSubmitTransference()" fxLayout="row wrap" fxLayoutAlign="center center">
+                        <div fxLayout="row wrap" fxFlex="100%">
+                            <label [style]="{width: '360px'}"  for="dropdown">Conta de Destino:</label>
+                            <p-dropdown formControlName="accountDestiny" inputId="dropdown" [autoDisplayFirst]="false" [style]="{width: '360px'}" [options]="contasDestiny"  optionLabel="numero">
+                                <ng-template let-conta pTemplate="selectedItem">
+                                    <div fxFlex="80%">
+                                        <i class="pi pi-user" style="font-size: 0.8em"></i> {{conta.titular}}
+                                    </div>
+                                    <div fxFlex="80%">
+                                        Número: {{conta.numero}}
+                                    </div>
+                                </ng-template>
+                                <ng-template let-conta pTemplate="item">
+                                    <div fxFlex="80%">
+                                        <i class="pi pi-user" style="font-size: 0.8em"></i> {{conta.titular}}
+                                    </div>
+                                    <div fxFlex="80%">
+                                        Número: {{conta.numero}}
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>                            
+                        </div>
+                        <div fxLayout="row wrap" fxFlex="100%" style="margin-top: 12px;">
+                            <label [style]="{width: '360px'}"  for="dropdown">Valor da Transferencia:</label>
+                            <div [style]="{width: '360px'}" class="p-inputgroup">
+                                <span class="p-inputgroup-addon">$</span> 
+                                <p-inputNumber mode="currency" currency="BRL" locale="pt-BR"></p-inputNumber>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row wrap" fxFlex="100%" style="margin-top: 12px;">
+                            <label [style]="{width: '360px'}" for="dateTransference">Data da Transferencia</label>
+                            <p-calendar [style]="{width: '360px'}" inputId="dateTransference"></p-calendar>
+                        </div>
+
+                        <div fxLayout="row wrap" fxFlex="100%" style="margin-top: 12px;">
+                            <div class="field">
+                                <h5>Taxa:</h5>
+                                <p-knob [readonly]="true" valueTemplate="R${value}"></p-knob>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxFlex="100%" style="margin-top: 12px;">
+                            <p-button icon="pi pi-check" label="Confirmar" styleClass="p-button-raised"></p-button>
+                        </div>
+                    </form>
+                </ng-template>
+            </p-panel>
+        </div>
+        <!-- Painel Data/Etc -->
+        <div fxFlex.gt-md="70%" fxFlex.gt-sm="100%" fxLayout="row wrap">
+            <router-outlet fxFlex="100%">
+            </router-outlet>
         </div>
     </div>
 </div>

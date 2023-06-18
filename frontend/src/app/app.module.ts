@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,13 @@ import { CardModule } from 'primeng/card';
 import { PageComponent } from './pages/page.component';
 import { MenubarModule } from 'primeng/menubar';
 import { DropdownModule } from 'primeng/dropdown';
+import { PanelModule } from 'primeng/panel';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
+import { KnobModule } from 'primeng/knob';
+import { TransferenciaService } from './core/services/transferencia.service';
+import { ContaService } from './core/services/conta.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,15 +26,21 @@ import { DropdownModule } from 'primeng/dropdown';
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
+    KnobModule,
+    HttpClientModule,
+    CalendarModule,
     FlexLayoutModule,
+    InputNumberModule,
     CardModule,
+    PanelModule,
     BrowserAnimationsModule,
     DropdownModule,
     MenubarModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ContaService,TransferenciaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,8 @@
 backend/target/
+backend/.idea/
+backend/.settings/
+backend/.settings/org.eclipse.jdt.core.prefs
+backend/backend.iml
 backend/pom.xml.tag
 backend/pom.xml.releaseBackup
 backend/pom.xml.versionsBackup
@@ -20,3 +24,4 @@ backend/bin/
 frontend/.angular/
 frontend/node_modules/
 frontend/package-lock.json
+frontend/.vscode/
