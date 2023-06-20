@@ -1,3 +1,14 @@
+# Full Stack
+
+![Tela inicial](./tokiobanck.png)
+
+# Bibliotecas
+
+* [SpringBoot](https://spring.io) - Plataforma para desenvolvimento web em java
+* [PrimeNG]([https://spring.io](https://primeng.org/) - Biblioteca de WebComponent
+* [Lombok](https://projectlombok.org) - Biblioteca para agilizar a codificação em Java
+* [H2](https://www.h2database.com) - Sistema de gerenciamento de banco de dados relacional escrito em Java.
+
 # Entregáveis
  Pequena documentação no README explicando suas decisões arquiteturais, versões de linguagem,
 ferramentas utilizadas e instruções para a subida do projeto.
