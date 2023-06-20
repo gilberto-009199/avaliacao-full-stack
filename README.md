@@ -5,7 +5,7 @@
 # Bibliotecas
 
 * [SpringBoot](https://spring.io) - Plataforma para desenvolvimento web em java
-* [PrimeNG]([https://spring.io](https://primeng.org/) - Biblioteca de WebComponent
+* [PrimeNG](https://primeng.org/) - Biblioteca de WebComponent
 * [Lombok](https://projectlombok.org) - Biblioteca para agilizar a codificação em Java
 * [H2](https://www.h2database.com) - Sistema de gerenciamento de banco de dados relacional escrito em Java.
 
