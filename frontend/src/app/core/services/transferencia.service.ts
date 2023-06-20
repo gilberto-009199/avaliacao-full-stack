@@ -12,6 +12,9 @@ export class TransferenciaService{
 
     constructor(private http: HttpClient) { }
 
+    create(req : AccountTransference):Observable<any>{
+        return this.http.post<any>(`${this.url_API}/account/transference`,req);
+    }
     getAll():Observable<AccountTransference[]>{
         return this.http.get<AccountTransference[]>(`${this.url_API}/account/transference`)
     }

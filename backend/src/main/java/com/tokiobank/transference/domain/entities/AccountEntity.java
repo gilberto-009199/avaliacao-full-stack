@@ -9,7 +9,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tokiobank.transference.business.models.AccountDto;
+import com.tokiobank.transference.api.viewmodels.AccountViewModel;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -37,6 +37,12 @@ public class AccountEntity extends BaseEntity{
 	@OneToMany(targetEntity = AccountTransferenceEntity.class, fetch = FetchType.LAZY, mappedBy = "accountDestiny", cascade = CascadeType.ALL)
 	//@JsonIgnoreProperties("accountOrigin")
 	private List<AccountTransferenceEntity> listAccountTransferenceDestiny;
+
+	public AccountEntity() {}
+	public AccountEntity(AccountViewModel model) {
+		this.titular = model.getTitular();
+		this.numero = model.getNumero();
+	}
 
 	public String getTitular() {
 		return titular;

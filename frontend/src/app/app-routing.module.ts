@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageComponent } from './pages/page.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -14,9 +13,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
+//  declarations:[TaxPipe],
+//  providers:[PipesModule],
   imports: [
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule]
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

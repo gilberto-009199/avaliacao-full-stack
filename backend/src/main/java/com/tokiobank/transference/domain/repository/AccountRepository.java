@@ -16,7 +16,6 @@ import jakarta.transaction.Transactional;
 public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
 	Optional<AccountEntity> findById(UUID id);
 
-	@Transactional
 	@Query("SELECT a FROM #{#entityName} a WHERE a.numero=:numero")
 	Optional<AccountEntity> findByAccountNumber(@Param("numero") String numero);
 }

@@ -4,6 +4,7 @@ import { ContaService } from 'src/app/core/services/conta.service';
 import { TransferenciaService } from 'src/app/core/services/transferencia.service';
 import { Account } from 'src/app/core/viewmodel/account.viewmodel';
 import { AccountTransference } from 'src/app/core/viewmodel/accountTransference.viewmodel';
+import { TaxPipe } from 'src/app/pipes/tax.pipe';
 
 
 @Component({

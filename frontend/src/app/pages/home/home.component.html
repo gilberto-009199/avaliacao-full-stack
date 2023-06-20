@@ -27,7 +27,7 @@
                         <td [ngStyle]="{'color': account ? (transference?.accountOrigin.numero == account ? 'red' : 'green'):''}">
                             R$ {{transference?.valueTransference  | number: '1.1-2'}}
                         </td>
-                        <td>R$ {{ (transference.tax.taxValue + transference.valueTransference * (0.1 * transference.tax.taxPercent)) | number: '1.1-2'}}</td>
+                        <td>R$ {{ transference | taxa | number: '1.1-2' }}</td>
                         <td>{{ transference.appointmentDate | date:'dd/MM/YY' }}</td>
                     </tr>
                 </ng-template>

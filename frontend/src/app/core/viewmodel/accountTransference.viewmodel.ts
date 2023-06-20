@@ -1,4 +1,4 @@
-import { TaxMaxDaysEnum, TaxMaxValueEnum } from "../enums/tax.enum";
+import { TaxMaxDaysEnum, TaxMaxValueEnum, TaxPercentEnum, TaxValueEnum } from "../enums/tax.enum";
 import { Account } from "./account.viewmodel";
 import { AccountTransferenceTax } from "./accountTransferenceTax.viewmodel";
 
@@ -16,62 +16,70 @@ export class AccountTransference {
           return;
         }
         if (values.accountOrigin) {
-            values.accountOrigin = values.accountOrigin.map((a: Account) => new Account(a));
+            values.accountOrigin = new Account( values.accountOrigin );
         }
         if (values.accountDestiny) {
-            values.accountDestiny = values.accountDestiny.map((a: Account) => new Account(a));
+            values.accountDestiny = new Account( values.accountDestiny );
         }
         if (values.tax) {
-            values.tax = values.tax.map((a: AccountTransferenceTax) => new AccountTransferenceTax(a));
+            console.log(values.tax);
+            values.tax = new AccountTransferenceTax(values.tax);
         }
         Object.assign(this, values);
     }
 
     public static calcTax( accountTransference: AccountTransference):number{
 
-/*
-        maxDaysPerTax!: number;
-        maxValuePeerTax!: number;
-        taxPercent!: number;
-        taxValue!: number;
-*/
         let total = 0;
+        let taxValue = 0;
+        let taxPercent = 0;
+        
         let isExistTaxThenCalc = !accountTransference.tax;
+
         if(isExistTaxThenCalc){
+
             let diffInDates = accountTransference.createdDate.getTime() - accountTransference.appointmentDate.getTime();
-            let diffInDays = diffInDates / (1000 * 3600 * 24);
+            let diffInDays = Math.round(diffInDates / (1000 * 3600 * 24))* (-1);
 
-            let taxPercent = 0;
-            
             if(diffInDays <= TaxMaxDaysEnum.A){
-
+                taxValue = TaxValueEnum.A;
+                taxPercent = TaxPercentEnum.A;
             }else if(diffInDays <= TaxMaxDaysEnum.B){
-
+                taxValue = TaxValueEnum.B;
+                taxPercent = TaxPercentEnum.B;
             }else if(diffInDays <= TaxMaxDaysEnum.C){
-
+                taxPercent = TaxPercentEnum.C;
             }else if(diffInDays <= TaxMaxDaysEnum.C2){
-                
+                taxPercent = TaxPercentEnum.C2;
             }else if(diffInDays <= TaxMaxDaysEnum.C3){
-                
+                taxPercent = TaxPercentEnum.C3;
             }else if(diffInDays > TaxMaxDaysEnum.C4){
-                
+                taxPercent = TaxPercentEnum.C4;
             }
 
-            let taxValue = 0;
             // if's max value
-            if(accountTransference.valueTransference < TaxMaxValueEnum.A){
-
-            }else if(accountTransference.valueTransference < TaxMaxValueEnum.B){
-                
-            }else if(accountTransference.valueTransference < TaxMaxValueEnum.C){
-                
-
+            if(accountTransference.valueTransference > TaxMaxValueEnum.A && accountTransference.valueTransference < TaxMaxValueEnum.B){
+                taxValue = TaxValueEnum.B;
+                taxPercent = TaxPercentEnum.B;
+            }else if( accountTransference.valueTransference > TaxMaxValueEnum.B && accountTransference.valueTransference > TaxMaxValueEnum.C){
+                taxValue = 0;
+                if(diffInDays <= TaxMaxDaysEnum.C){
+                    taxPercent = TaxPercentEnum.C;
+                }else if(diffInDays <= TaxMaxDaysEnum.C2){
+                    taxPercent = TaxPercentEnum.C2;
+                }else if(diffInDays <= TaxMaxDaysEnum.C3){
+                    taxPercent = TaxPercentEnum.C3;
+                }else if(diffInDays > TaxMaxDaysEnum.C4){
+                    taxPercent = TaxPercentEnum.C4;
+                }
             }
+        } else {
+            taxValue = accountTransference.tax.taxValue;
+            taxPercent = accountTransference.tax.taxPercent;
         }
 
-        let tax = accountTransference.tax;
-        total += accountTransference.tax.taxValue;
-        total += accountTransference.valueTransference * (0.1 * accountTransference.tax.taxPercent);
+        total += taxValue;
+        total += accountTransference.valueTransference * (0.01 * taxPercent);
 
         return total;
     }

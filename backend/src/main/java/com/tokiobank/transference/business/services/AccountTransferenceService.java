@@ -1,3 +1,10 @@
 package com.tokiobank.transference.business.services;
 
-public interface AccountTransferenceService {}
+import com.tokiobank.transference.api.viewmodels.AccountTransferenceViewModel;
+
+import jakarta.validation.Valid;
+
+public interface AccountTransferenceService {
+
+	AccountTransferenceViewModel create(AccountTransferenceViewModel account);
+}

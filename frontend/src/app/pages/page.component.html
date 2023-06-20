@@ -33,10 +33,10 @@
                     Transferencia
                 </ng-template>
                 <ng-template pTemplate="body">
-                    <form [formGroup]="frmTransference" (ngSubmit)="onSubmitTransference()" fxLayout="row wrap" fxLayoutAlign="center center">
+                    <form [formGroup]="frmTransference" (ngSubmit)="onSubmitTransference(frmTransference.value)" fxLayout="row wrap" fxLayoutAlign="center center">
                         <div fxLayout="row wrap" fxFlex="100%">
-                            <label [style]="{width: '360px'}"  for="dropdown">Conta de Destino:</label>
-                            <p-dropdown formControlName="accountDestiny" inputId="dropdown" [autoDisplayFirst]="false" [style]="{width: '360px'}" [options]="contasDestiny"  optionLabel="numero">
+                            <label [style]="{width: '360px'}"  for="accountDestiny">Conta de Destino:</label>
+                            <p-dropdown formControlName="accountDestiny" inputId="accountDestiny" [autoDisplayFirst]="false" [style]="{width: '360px'}" [options]="contasDestiny"  optionLabel="numero">
                                 <ng-template let-conta pTemplate="selectedItem">
                                     <div fxFlex="80%">
                                         <i class="pi pi-user" style="font-size: 0.8em"></i> {{conta.titular}}
@@ -53,29 +53,32 @@
                                         Número: {{conta.numero}}
                                     </div>
                                 </ng-template>
-                            </p-dropdown>                            
+                            </p-dropdown>    
+                            <p-message *ngIf="!frmTransference.controls['accountDestiny'].valid && frmTransference.controls['accountDestiny'].dirty" severity="error" text="É necessario ao menos uma conta de destino!"></p-message>                        
                         </div>
                         <div fxLayout="row wrap" fxFlex="100%" style="margin-top: 12px;">
-                            <label [style]="{width: '360px'}"  for="dropdown">Valor da Transferencia:</label>
+                            <label [style]="{width: '360px'}"  for="valueTransference">Valor da Transferencia:</label>
                             <div [style]="{width: '360px'}" class="p-inputgroup">
                                 <span class="p-inputgroup-addon">$</span> 
-                                <p-inputNumber mode="currency" currency="BRL" locale="pt-BR"></p-inputNumber>
+                                <p-inputNumber (onInput)="onChangeAccountTransference()" (ngChange)="onChangeAccountTransference()" (ngModelChange)="onChangeAccountTransference()" formControlName="valueTransference" inputId="valueTransference"  mode="currency" currency="BRL" locale="pt-BR"></p-inputNumber>
+                                <p-message *ngIf="!frmTransference.controls['valueTransference'].valid && frmTransference.controls['valueTransference'].dirty" severity="error" text="O valor minimo é R$ 3.3"></p-message>
                             </div>
                         </div>
 
                         <div fxLayout="row wrap" fxFlex="100%" style="margin-top: 12px;">
-                            <label [style]="{width: '360px'}" for="dateTransference">Data da Transferencia</label>
-                            <p-calendar [style]="{width: '360px'}" inputId="dateTransference"></p-calendar>
+                            <label [style]="{width: '360px'}" for="appointmentDate">Data da Transferencia</label>
+                            <p-calendar [minDate]="minDateVal" (ngModelChange)="onChangeAccountTransference()" [style]="{width: '360px'}" formControlName="appointmentDate" inputId="appointmentDate" dateFormat="dd/mm/yy"></p-calendar>
+                            <p-message *ngIf="!frmTransference.controls['appointmentDate'].valid && frmTransference.controls['appointmentDate'].dirty" severity="error" text="A data da transferencia é obrigatorio!"></p-message>
                         </div>
 
                         <div fxLayout="row wrap" fxFlex="100%" style="margin-top: 12px;">
                             <div class="field">
                                 <h5>Taxa:</h5>
-                                <p-knob [readonly]="true" valueTemplate="R${value}"></p-knob>
+                                <p-knob formControlName="tax_pressume" [strokeWidth]="5" inputId="tax_pressume" [readonly]="true" valueTemplate="${{tax | number: '1.1-2' }}"></p-knob>
                             </div>
                         </div>
                         <div fxLayout="row" fxFlex="100%" style="margin-top: 12px;">
-                            <p-button icon="pi pi-check" label="Confirmar" styleClass="p-button-raised"></p-button>
+                            <p-button type="submit" icon="pi pi-check" label="Confirmar" styleClass="p-button-raised"></p-button>
                         </div>
                     </form>
                 </ng-template>

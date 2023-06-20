@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CardModule } from 'primeng/card';
 import { PageComponent } from './pages/page.component';
 import { MenubarModule } from 'primeng/menubar';
+import {MessageModule} from 'primeng/message';
 import { DropdownModule } from 'primeng/dropdown';
 import { PanelModule } from 'primeng/panel';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -18,6 +19,9 @@ import { KnobModule } from 'primeng/knob';
 import { TransferenciaService } from './core/services/transferencia.service';
 import { ContaService } from './core/services/conta.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TaxPipe } from './pipes/tax.pipe';
+import { PipesModule } from './pipes/pipe.module';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     PageComponent
   ],
   imports: [
+    MessageModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -40,7 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     MenubarModule,
     AppRoutingModule
   ],
-  providers: [ContaService,TransferenciaService],
+  providers: [ContaService, TransferenciaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

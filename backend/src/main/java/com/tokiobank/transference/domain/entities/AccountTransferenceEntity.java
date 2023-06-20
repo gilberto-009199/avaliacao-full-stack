@@ -12,6 +12,8 @@ import org.hibernate.annotations.LazyToOneOption;
 import org.hibernate.validator.internal.util.stereotypes.Lazy;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.tokiobank.transference.api.viewmodels.AccountTransferenceViewModel;
+import com.tokiobank.transference.api.viewmodels.AccountViewModel;
 import com.tokiobank.transference.business.enums.TaxEnum;
 
 import jakarta.persistence.CascadeType;
@@ -51,6 +53,7 @@ public class AccountTransferenceEntity extends BaseEntity{
 	@Column(updatable = false)
 	private LocalDate appointmentDate;
 
+	
 	public AccountEntity getAccountOrigin() {
 		return accountOrigin;
 	}
@@ -90,5 +93,36 @@ public class AccountTransferenceEntity extends BaseEntity{
 	public void setAppointmentDate(LocalDate appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
-		
+	
+	public AccountTransferenceEntity withAppointmentDate(LocalDate appointmentDate) {
+		this.appointmentDate = appointmentDate;
+		return this;
+	}
+	public AccountTransferenceEntity withTax(TaxEnum tax) {
+		this.tax = new TaxEntity(tax);
+		return this;
+	}
+	public AccountTransferenceEntity withTax(TaxEntity tax) {
+		this.tax = tax;
+		return this;
+	}
+	public AccountTransferenceEntity withValueTransference(BigDecimal valueTransference) {
+		this.valueTransference = valueTransference;
+		return this;
+	}
+	public AccountTransferenceEntity withAccountOrigin(AccountViewModel accountOrigin) {
+		return withAccountOrigin(new AccountEntity( accountOrigin ));
+	}
+	public AccountTransferenceEntity withAccountOrigin(AccountEntity accountOrigin) {
+		this.accountOrigin = accountOrigin;
+		return this;
+	}
+	public AccountTransferenceEntity withAccountDestiny(AccountViewModel accountDestiny) {
+		return withAccountDestiny(new AccountEntity( accountDestiny ));
+	}
+	public AccountTransferenceEntity withAccountDestiny(AccountEntity accountDestiny) {
+		this.accountDestiny = accountDestiny;
+		return this;
+	}
+	
 }
