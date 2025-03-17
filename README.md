@@ -1,7 +1,9 @@
 # Avaliação Full Stack
 
-![Tela inicial](./tokiobanck.png)
+<img src="tokiobanck.png" width="600px" alt="tela da aplicação">
 
+ Aplicação em Angular com SpringBoot
+ 
 # Bibliotecas
 
 * [SpringBoot](https://spring.io) - Plataforma para desenvolvimento web em java
