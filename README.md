@@ -1,8 +1,15 @@
-# Avaliação Full Stack
+# Desafio Avaliação Full Stack
 
 <img src="tokiobanck.png" width="600px" alt="tela da aplicação">
 
- Aplicação em Angular com SpringBoot
+
+<img align="right" src="./assets/spring16x16.svg" alt="Spring Boot" width="32px"/>
+<img align="right" src="./assets/docker16x16.svg" alt="Docker" width="32px"/>
+<img align="right" src="./assets/angularjs.svg" alt="Angular" width="32px"/>
+<img align="right" src="./assets/primeng.svg" alt="PrimeNG" width="32px"/>
+<img align="right" src="./assets/lombok.svg" alt="Lombok" width="32px"/>
+
+Desafio sistema de agendamento de transferências financeiras. Aplicar as taxas conforme as regras baseadas em tempo e valor. Usando **SpringBoot**, **Docker**, **Angular** com **PrimeNG** e **Lombok**.
  
 # Bibliotecas
 
