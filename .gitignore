@@ -1,6 +1,9 @@
+.vscode/
+.idea/
+
 backend/target/
 backend/.idea/
-backend/.settings/
+backend/.settings/*
 backend/.settings/org.eclipse.jdt.core.prefs
 backend/backend.iml
 backend/pom.xml.tag
