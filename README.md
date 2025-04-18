@@ -10,6 +10,12 @@
 <img align="right" src="./assets/lombok.svg" alt="Lombok" width="32px"/>
 
 Desafio sistema de agendamento de transferências financeiras. Aplicar as taxas conforme as regras baseadas em tempo e valor. Usando **SpringBoot**, **Docker**, **Angular** com **PrimeNG** e **Lombok**.
+
+## How Run:
+
+```shell
+$ docker compose up
+```
  
 # Bibliotecas
 
