@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 import com.tokiobank.transference.domain.entities.AccountEntity;
 import com.tokiobank.transference.domain.entities.AccountTransferenceEntity;
 
-public interface AccountTransferenceRepository extends JpaRepository<AccountTransferenceEntity, Long> {
+public interface AccountTransferenceRepository extends JpaRepository<AccountTransferenceEntity, UUID> {
 	Optional<AccountTransferenceEntity> findById(UUID id);
 	
 	@Modifying

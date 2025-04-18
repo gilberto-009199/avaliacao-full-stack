@@ -13,7 +13,7 @@ import com.tokiobank.transference.domain.entities.AccountEntity;
 
 import jakarta.transaction.Transactional;
 
-public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
+public interface AccountRepository extends JpaRepository<AccountEntity, UUID> {
 	Optional<AccountEntity> findById(UUID id);
 
 	@Query("SELECT a FROM #{#entityName} a WHERE a.numero=:numero")
