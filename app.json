@@ -3,6 +3,7 @@
   "description": "API spring",
   "repository": "https://github.com/gilberto-009199/avaliacao-full-stack",
   "logo": "https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg",
+  "image": "heroku/buildpack-java",
   "keywords": [
     "java",
     "spring"
