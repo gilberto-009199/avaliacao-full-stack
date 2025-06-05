@@ -5,11 +5,11 @@
 <img src="tokiobanck.png" width="600px" alt="tela da aplicação">
 
 
-<img align="right" src="./assets/spring16x16.svg" alt="Spring Boot" width="32px"/>
-<img align="right" src="./assets/docker16x16.svg" alt="Docker" width="32px"/>
-<img align="right" src="./assets/angularjs.svg" alt="Angular" width="32px"/>
-<img align="right" src="./assets/primeng.svg" alt="PrimeNG" width="32px"/>
-<img align="right" src="./assets/lombok.svg" alt="Lombok" width="32px"/>
+<img align="right" src="https://filedn.com/l3HMwWFeFPE7q4xHdixbsqH/github.assets/spring16x16.svg" alt="Spring Boot" width="32px"/>
+<img align="right" src="https://filedn.com/l3HMwWFeFPE7q4xHdixbsqH/github.assets/docker16x16.svg" alt="Docker" width="32px"/>
+<img align="right" src="https://filedn.com/l3HMwWFeFPE7q4xHdixbsqH/github.assets/angularjs.svg" alt="Angular" width="32px"/>
+<img align="right" src="https://filedn.com/l3HMwWFeFPE7q4xHdixbsqH/github.assets/primeng.svg" alt="PrimeNG" width="32px"/>
+<img align="right" src="https://filedn.com/l3HMwWFeFPE7q4xHdixbsqH/github.assets/lombok.svg" alt="Lombok" width="32px"/>
 
 Desafio sistema de agendamento de transferências financeiras. Aplicar as taxas conforme as regras baseadas em tempo e valor. Usando **SpringBoot**, **Docker**, **Angular** com **PrimeNG** e **Lombok**.
 
